@@ -1,0 +1,7 @@
+/.yardoc/
+.claude/
+/doc/
+/pkg/
+/tmp/
+Gemfile.lock
+.DS_Store

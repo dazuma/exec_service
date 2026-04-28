@@ -1,0 +1,10 @@
+--no-private
+--title=ExecService
+--markup=markdown
+--markup-provider redcarpet
+--main=README.md
+./lib/exec_service.rb
+-
+README.md
+LICENSE.md
+CHANGELOG.md
