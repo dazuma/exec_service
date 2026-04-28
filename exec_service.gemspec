@@ -10,10 +10,12 @@ require "exec_service/version"
   spec.authors = ["Daniel Azuma"]
   spec.email = ["dazuma@gmail.com"]
 
-  spec.summary = "A Ractor wrapper for a non-shareable object."
+  spec.summary = "A service that executes subprocesses."
   spec.description =
-    "An experimental class that wraps a non-shareable object in a Ractor," \
-    " allowing multiple client Ractors to access it concurrently."
+    "This service provides a convenient interface for controlling spawned " \
+    "processes and their streams. It also provides shortcuts for common " \
+    "cases such as invoking Ruby in a subprocess or capturing output in a " \
+    "string."
   spec.license = "MIT"
   spec.homepage = "https://github.com/dazuma/exec_service"
 
