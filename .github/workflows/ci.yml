@@ -56,7 +56,7 @@ jobs:
             steps: "--test"
           - os: ubuntu-latest
             ruby: "4.0"
-            tool: "--rubocop --build --yard"
+            steps: "--rubocop --build --yard"
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
@@ -71,6 +71,6 @@ jobs:
       - name: Install toys
         shell: bash
         run: "gem install --no-document toys"
-      - name: Run ${{ matrix.tool }}
+      - name: Run ${{ matrix.steps }}
         shell: bash
-        run: toys ci --only ${{ matrix.tool }} < /dev/null
+        run: toys ci --only ${{ matrix.steps }} < /dev/null
