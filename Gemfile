@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-minitest_versions = ::RUBY_VERSION < "3.1" ? ["~> 5.26"] : ["~> 6.0", ">= 6.0.1"]
+minitest_versions = ::RUBY_VERSION < "3.1" ? ["~> 5.26"] : [">= 5.26", "< 7"]
 gem "minitest", *minitest_versions
 gem "minitest-focus", "~> 1.4", ">= 1.4.1"
 gem "minitest-rg", "~> 5.4"
