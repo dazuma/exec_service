@@ -2,13 +2,11 @@
 
 `ExecService` is a full-featured Ruby service class for running and managing
 subprocesses. It provides a rich interface for spawning processes, controlling
-and monitoring those processes, interacting with streams, and interpreting
-results. It also provides shortcuts for common cases such as invoking Ruby in
-a subprocess or capturing output in a string.
-
-Use `ExecService` when simple tools such as the `system()` method are not
-sufficiently powerful or expressive, or when even libraries like `Open3` don't
-give you the tools you want.
+and monitoring those processes, setting up and redirecting streams, and
+interpreting results. It also provides shortcuts for common cases such as
+invoking Ruby in a subprocess or capturing output in a string. Use
+`ExecService` when existing interfaces such as the `system()` method or the
+`Open3` library are not sufficiently powerful or expressive for your needs.
 
 ## Getting started
 
@@ -34,6 +32,40 @@ exec_service = ExecService.new
 git_version = exec_service.capture(["git", "--version"]).chomp
 ```
 
+## Features
+
+ *  Execute subprocesses in the foreground (i.e. blocking until completion) or
+    background (returning immediately)
+ *  Fork (execute a proc in a subprocess) or spawn (specify a command to run)
+ *  Environment setup for the subprocess, including
+     *  Working directory
+     *  Environment variables
+     *  Optionally disabling any existing bundle
+     *  Umask
+     *  Process group
+ *  Rich process control interface, including:
+     *  Access to process state and results
+     *  Read/write access to non-redirected streams
+     *  Signalling
+     *  Joining
+ *  Robust setup and redirect of streams, including:
+     *  Inheriting parent process streams
+     *  Redirecting to/from files
+     *  Redirecting to/from pipes
+     *  Redirecting to/from arbitrary IO objects
+     *  Redirecting error to out and vice versa
+     *  Reading input from strings
+     *  Capturing output streams
+     *  Tees for output streams
+     *  Redirecting to/from null
+     *  Closing streams
+ *  Rich result reporting, including exit status, signals, and exceptions
+ *  Convenience methods for common use cases, including:
+     *  Simple output captures
+     *  Running Ruby processes
+     *  Executing a string in the shell
+ *  Customizable logging
+
 ## Contributing
 
 Development is done in GitHub at https://github.com/dazuma/exec_service.
@@ -50,7 +82,7 @@ unit tests, rubocop, and build tests independently.
 
 ## License
 
-Copyright 2021-2026 Daniel Azuma
+Copyright 2026 Daniel Azuma
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
