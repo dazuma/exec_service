@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; ExecService
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="css/common.css" type="text/css">
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="execservice">ExecService</h1>
+
+<p><code>ExecService</code> is a full-featured Ruby service class for running and managing
+subprocesses. It provides a rich interface for spawning processes, controlling
+and monitoring those processes, setting up and redirecting streams, and
+interpreting results. It also provides shortcuts for common cases such as
+invoking Ruby in a subprocess or capturing output in a string. Use
+<code>ExecService</code> when existing interfaces such as the <code>system()</code> method or the
+<code>Open3</code> library are not sufficiently powerful or expressive for your needs.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>Install <code>ExecService</code> via the
+<a href="https://rubygems.org/gems/exec_service">exec_service gem</a>.</p>
+
+<pre class="code sh"><code class="sh">% gem install exec_service
+</code></pre>
+
+<p>or add it to your Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>exec_service</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<p>To use the service, instantiate <code>ExecService</code>, and call the convenient methods
+on it to spawn subprocesses:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>exec_service</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_exec_service'>exec_service</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ExecService.html" title="ExecService (class)">ExecService</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ExecService.html#initialize-instance_method" title="ExecService#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_git_version'>git_version</span> <span class='op'>=</span> <span class='id identifier rubyid_exec_service'>exec_service</span><span class='period'>.</span><span class='id identifier rubyid_capture'>capture</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>git</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>--version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+</code></pre>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li> Execute subprocesses in the foreground (i.e. blocking until completion) or
+background (returning immediately)</li>
+<li> Fork (execute a proc in a subprocess) or spawn (specify a command to run)</li>
+<li> Environment setup for the subprocess, including
+
+<ul>
+<li> Working directory</li>
+<li> Environment variables</li>
+<li> Optionally disabling any existing bundle</li>
+<li> Umask</li>
+<li> Process group</li>
+</ul></li>
+<li> Rich process control interface, including:
+
+<ul>
+<li> Access to process state and results</li>
+<li> Read/write access to non-redirected streams</li>
+<li> Signalling</li>
+<li> Joining</li>
+</ul></li>
+<li> Robust setup and redirect of streams, including:
+
+<ul>
+<li> Inheriting parent process streams</li>
+<li> Redirecting to/from files</li>
+<li> Redirecting to/from pipes</li>
+<li> Redirecting to/from arbitrary IO objects</li>
+<li> Redirecting error to out and vice versa</li>
+<li> Reading input from strings</li>
+<li> Capturing output streams</li>
+<li> Tees for output streams</li>
+<li> Redirecting to/from null</li>
+<li> Closing streams</li>
+</ul></li>
+<li> Rich result reporting, including exit status, signals, and exceptions</li>
+<li> Convenience methods for common use cases, including:
+
+<ul>
+<li> Simple output captures</li>
+<li> Running Ruby processes</li>
+<li> Executing a string in the shell</li>
+</ul></li>
+<li> Customizable logging</li>
+</ul>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>Development is done in GitHub at <a href="https://github.com/dazuma/exec_service">https://github.com/dazuma/exec_service</a>.</p>
+
+<ul>
+<li> To file issues: <a href="https://github.com/dazuma/exec_service/issues">https://github.com/dazuma/exec_service/issues</a>.</li>
+<li> For questions and discussion, please do not file an issue. Instead, use the
+discussions feature: <a href="https://github.com/dazuma/exec_service/discussions">https://github.com/dazuma/exec_service/discussions</a>.</li>
+<li> Pull requests are welcome, but in general please open an issue first before
+contributing significant changes.</li>
+</ul>
+
+<p>The library uses <a href="https://dazuma.github.io/toys">toys</a> for testing and CI. To
+run the test suite, <code>gem install toys</code> and then run <code>toys ci</code>. You can also run
+unit tests, rubocop, and build tests independently.</p>
+
+<h2 id="license">License</h2>
+
+<p>Copyright 2026 Daniel Azuma</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Thu Apr 30 19:05:45 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.43 (ruby-4.0.3).
+</div>
+
+    </div>
+  </body>
+</html>
