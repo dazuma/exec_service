@@ -3,6 +3,7 @@
 --markup=markdown
 --markup-provider redcarpet
 --main=README.md
+./lib/exec_service/**/*.rb
 ./lib/exec_service.rb
 -
 README.md
